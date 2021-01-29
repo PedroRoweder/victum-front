@@ -3,11 +3,11 @@ import backgroundImage from "~/assets/login-background.jpg";
 const getStyles = () => {
   const styles = {
     root: {
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
       width: "100vw",
       height: "100vh",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
       backgroundImage: `url(${backgroundImage})`,
       backgroundRepeat: "no-repeat",
       backgroundPosition: "center",
@@ -33,7 +33,7 @@ const getStyles = () => {
     input: {
       border: "none",
       backgroundColor: "rgba(65, 70, 70,0.2)",
-      color: "#414646",
+      color: "var(--gray)",
       fontWeight: 600,
       fontSize: 20,
       borderRadius: 50,
@@ -42,8 +42,8 @@ const getStyles = () => {
     },
     button: {
       border: "none",
-      backgroundColor: "#0b5e5d",
-      color: "white",
+      backgroundColor: "var(--primary)",
+      color: "var(--white)",
       fontWeight: 500,
       padding: 10,
       fontSize: 20,

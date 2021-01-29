@@ -10,20 +10,14 @@ const Login = () => {
   const styles = getStyles();
   const [form, setForm] = useState({});
 
-  const handleChange = (e) => {
+  const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
-  };
 
   return (
     <div style={styles.root}>
       <div style={styles.loginContainer}>
         <img style={styles.companyLogo} src={autopflegeLogo} alt="" />
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-          }}
-          style={styles.form}
-        >
+        <form onSubmit={(e) => e.preventDefault()} style={styles.form}>
           <input
             type="text"
             name="login"
