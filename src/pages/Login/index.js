@@ -1,9 +1,13 @@
 import React, { useState } from "react";
-// import getStyles from "./styles";
+
+// Images
+import autopflegeLogo from "~/assets/autopflege-logo.png";
+
+// Styling
+import getStyles from "./styles";
 
 const Login = () => {
-  // const styles = getStyles;
-
+  const styles = getStyles();
   const [form, setForm] = useState({});
 
   const handleChange = (e) => {
@@ -11,51 +15,20 @@ const Login = () => {
   };
 
   return (
-    <div
-      className="background"
-      style={{
-        display: "flex",
-        width: "100vh",
-        height: "100vh",
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundImage: "URL(~/assets/main_background.jpg)",
-        backgroundRepeat: "no-repeat",
-      }}
-    >
-      <div
-        className="login"
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "30vh",
-          width: "40vh",
-          borderRadius: "5px",
-        }}
-      >
-        <h1 style={{ marginBottom: "35px" }}>AUTOPFLEGE</h1>
+    <div style={styles.root}>
+      <div style={styles.loginContainer}>
+        <img style={styles.companyLogo} src={autopflegeLogo} alt="" />
         <form
           onSubmit={(e) => {
             e.preventDefault();
           }}
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            width: "60%",
-          }}
+          style={styles.form}
         >
           <input
             type="text"
             name="login"
             placeholder="Login"
-            style={{
-              border: "1px solid gray",
-              borderRadius: "5px",
-              padding: "5px",
-              marginBottom: "5px",
-            }}
+            style={styles.input}
             value={form.login}
             onChange={handleChange}
           />
@@ -63,22 +36,13 @@ const Login = () => {
             type="password"
             name="password"
             placeholder="Senha"
-            style={{
-              border: "1px solid gray",
-              borderRadius: "5px",
-              padding: "5px",
-              marginBottom: "5px",
-            }}
+            style={styles.input}
             value={form.password}
             onChange={handleChange}
           />
-
-          <input
-            className="submit"
-            type="submit"
-            value="Entrar"
-            style={{ border: "none", borderRadius: "5px", padding: "5px" }}
-          />
+          <button type="submit" style={styles.button}>
+            Login
+          </button>
         </form>
       </div>
     </div>
