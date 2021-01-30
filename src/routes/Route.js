@@ -7,14 +7,14 @@ import DefaultLayout from "~/pages/_layouts/default";
 
 // eslint-disable-next-line react/prop-types
 const RouteWrapper = ({ component: Component, isPrivate, ...rest }) => {
-  const signed = false;
+  const signed = true;
 
   if (!signed && isPrivate) {
-    return <Redirect to="/login" />;
+    return <Redirect to="/" />;
   }
 
   if (signed && !isPrivate) {
-    return <Redirect to="/" />;
+    return <Redirect to="/dashboard" />;
   }
 
   const Layout = signed ? DefaultLayout : AuthLayout;

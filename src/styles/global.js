@@ -3,7 +3,10 @@ import { createGlobalStyle } from "styled-components";
 export default createGlobalStyle`
     :root {
         --primary: #0b5e5d;
-        --gray: #0b5e5d;
+        --gray: #414646;
+        --lightGray: #5c6363;
+
+        --primaryGradient: #129997, #0b5e5d;
 
         --white: #FFFFFF;
         --black: #000000;
@@ -29,7 +32,7 @@ export default createGlobalStyle`
     }
 
     body, input, button, select {
-        font: 14px 'Work Sans', sans-serif;
+        font: 14px 'Montserrat', sans-serif;
         color: #474747;
     }
 
