@@ -1,29 +1,16 @@
-const getStyles = () => {
+import styled from "styled-components";
+
+export const getStyles = () => {
   const styles = {
     root: {
+      position: "relative",
       display: "flex",
-      justifyContent: "flex-start",
+      justifyContent: "center",
       alignItems: "center",
-      flexDirection: "row",
+      flexDirection: "column",
       width: "100%",
       height: "100%",
       border: "1px solid red",
-    },
-    formContainer: {
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      width: "100%",
-      justifyContent: "center",
-    },
-    companyLogo: {
-      width: 250,
-      marginBottom: 75,
-    },
-    form: {
-      display: "flex",
-      flexDirection: "column",
-      width: "40%",
     },
     input: {
       border: "none",
@@ -43,11 +30,19 @@ const getStyles = () => {
       padding: 10,
       fontSize: 20,
       borderRadius: 50,
-      marginTop: 20,
     },
   };
 
   return styles;
 };
 
-export default getStyles;
+export const Warning = styled.div`
+  width: 100%;
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  visibility: ${(props) => (props.isVisible ? "visible" : "hidden")};
+`;
