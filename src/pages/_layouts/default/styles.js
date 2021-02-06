@@ -16,4 +16,5 @@ export const Content = styled.div`
   display: flex;
   justify-content: center;
   overflow: auto;
+  flex-direction: column;
 `;

@@ -8,6 +8,7 @@ export default createGlobalStyle`
 
         --primaryGradient: #129997, #0b5e5d;
 
+
         --white: #FFFFFF;
         --black: #000000;
     }
