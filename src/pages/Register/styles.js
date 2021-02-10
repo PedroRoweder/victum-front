@@ -10,11 +10,10 @@ export const getStyles = () => {
       flexDirection: "column",
       width: "100%",
       height: "100%",
-      border: "1px solid red",
     },
     input: {
       border: "none",
-      backgroundColor: "rgba(65, 70, 70,0.2)",
+      backgroundColor: "rgba(65, 70, 70, 0.2)",
       color: "var(--gray)",
       fontWeight: 600,
       fontSize: 20,
@@ -36,13 +35,34 @@ export const getStyles = () => {
   return styles;
 };
 
-export const Warning = styled.div`
+export const Notification = styled.div`
+  background-color: rgba(230, 175, 46, 0.7);
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
   position: absolute;
   top: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  visibility: ${(props) => (props.isVisible ? "visible" : "hidden")};
+  font-weight: 600;
+  font-size: 15;
+
+  &:hover {
+    box-shadow: 0px 1px 0px 0.5px rgba(0, 0, 0, 0.2);
+  }
+`;
+
+export const NotificationButton = styled.button`
+  border: none;
+  margin: 0;
+  padding: 8px;
+  background-color: transparent;
+  position: absolute;
+  right: 20px;
+  font-weight: 600;
+  font-size: 15;
+
+  &:hover {
+    color: red;
+  }
 `;

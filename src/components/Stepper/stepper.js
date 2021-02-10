@@ -15,20 +15,39 @@ const Stepper = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    const steps = pages.map((item, index) =>
-      index === pages.length - 1 ? (
-        <StepperItem active={`${index}` <= actualPage}>{index + 1}</StepperItem>
-      ) : (
-        <>
+    let steps = [];
+    if (pages.length >= 8) {
+      steps.push(<StepperItem active={actualPage >= 0}>1</StepperItem>);
+      steps.push(<Line active={actualPage > 0} />);
+      steps.push(
+        <StepperItem active={actualPage > 0}>
+          {actualPage}/{pages.length - 1}
+        </StepperItem>
+      );
+      steps.push(<Line active={actualPage === pages.length - 1} />);
+      steps.push(
+        <StepperItem active={actualPage === pages.length - 1}>
+          {pages.length}
+        </StepperItem>
+      );
+    } else {
+      steps = pages.map((item, index) =>
+        index === pages.length - 1 ? (
           <StepperItem active={`${index}` <= actualPage}>
             {index + 1}
-          </StepperItem>{" "}
-          <Line active={`${index}` < actualPage} />
-        </>
-      )
-    );
+          </StepperItem>
+        ) : (
+          <>
+            <StepperItem active={`${index}` <= actualPage}>
+              {index + 1}
+            </StepperItem>{" "}
+            <Line active={`${index}` < actualPage} />
+          </>
+        )
+      );
+    }
     setStepperContent(steps);
-  }, [actualPage]);
+  }, [pages.length, actualPage]);
 
   return (
     <div
@@ -41,10 +60,9 @@ const Stepper = ({ children }) => {
         justifyContent: "center",
         width: "100%",
         height: "100%",
-        border: "1px solid black",
       }}
     >
-      {children[actualPage]}
+      {pages[actualPage]}
       <div
         className="stepperNavigator"
         style={{
@@ -55,7 +73,6 @@ const Stepper = ({ children }) => {
           justifyContent: "center",
           alignItems: "center",
           width: "100%",
-          border: "1px solid green",
         }}
       >
         <Button
