@@ -1,0 +1,80 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+// these two eslint rules are for the correct working of the outside click
+// and the closing img icon
+import React, { useEffect, useRef } from "react";
+import PropTypes from "prop-types";
+
+// Icons
+import closeIcon from "~/assets/icons/dark-close.svg";
+
+// Components
+import {
+  OuterDiv,
+  CloseButton,
+  InnerMessage,
+  ButtonContainer,
+  MessageInnerDiv,
+} from "../styles";
+import Button from "~/components/Button";
+
+const Message = ({
+  isOpen,
+  handleClose,
+  handleConfirm,
+  handleCancel,
+  children,
+  ...props
+}) => {
+  const rootReference = useRef();
+  const innerReference = useRef();
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const handleClick = (e) => {
+    // this checks if the click is in the outer div
+    if (rootReference.current.contains(e.target)) {
+      // this checks if the click is in the inner div
+      if (innerReference.current.contains(e.target)) {
+        // so, if click is inside inner div, dont close
+        return;
+      }
+      handleClose();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClick, false);
+    return () => {
+      document.removeEventListener("mousedown", handleClick, false);
+    };
+  }, [handleClick]);
+
+  return (
+    <OuterDiv {...props} isOpen={isOpen} ref={rootReference}>
+      <MessageInnerDiv ref={innerReference}>
+        <CloseButton
+          src={closeIcon}
+          alt="Fechar"
+          onClick={() => handleClose()}
+        />
+        <InnerMessage>{children}</InnerMessage>
+        <ButtonContainer>
+          <Button onClick={() => handleConfirm()}>Confirmar</Button>
+          <Button onClick={() => handleCancel()} color="var(--red)" border>
+            Cancelar
+          </Button>
+        </ButtonContainer>
+      </MessageInnerDiv>
+    </OuterDiv>
+  );
+};
+
+Message.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  children: PropTypes.element.isRequired,
+  handleClose: PropTypes.func.isRequired,
+  handleCancel: PropTypes.func.isRequired,
+  handleConfirm: PropTypes.func.isRequired,
+};
+
+export default Message;
