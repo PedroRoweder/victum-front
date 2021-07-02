@@ -1,5 +1,8 @@
 import React from "react";
 import { Router } from "react-router-dom";
+import { ToastContainer, Slide } from "react-toastify";
+
+// Services
 import history from "./services/history";
 
 // Routes
@@ -12,6 +15,7 @@ const App = () => (
   <Router history={history}>
     <Routes />
     <GlobalStyle />
+    <ToastContainer autoClose={3000} draggable transition={Slide} />
   </Router>
 );
 

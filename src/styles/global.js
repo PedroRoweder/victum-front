@@ -1,10 +1,13 @@
 import { createGlobalStyle } from "styled-components";
+import "react-toastify/dist/ReactToastify.css";
 
 export default createGlobalStyle`
     :root {
         --primary: #0b5e5d;
         --gray: #414646;
         --lightGray: #5c6363;
+
+        --red: #DF2935;
 
         --primaryGradient: #129997, #0b5e5d;
 
